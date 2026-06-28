@@ -34,7 +34,7 @@ export async function POST(req: Request) {
     for (const [filePath, fileContent] of Object.entries(generatedFiles)) {
       zip.file(filePath, fileContent as string);
     }
-    const zipBuffer = await zip.generateAsync({ type: "nodebuffer" });
+    const zipBuffer = await zip.generateAsync({ type: "uint8array" });
 
     // 5. Send the finished .mcaddon file back to the user
     return new NextResponse(zipBuffer, {
