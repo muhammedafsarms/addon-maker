@@ -8,9 +8,14 @@ export async function POST(req: Request) {
     const { message } = await req.json();
 
     // Give the chat AI a different personality than the generator AI
-    const systemInstruction = `You are a friendly and expert Minecraft Bedrock Add-on developer assistant. 
-    The user will ask you for suggestions, debugging help, or how things work in Minecraft. 
-    Keep your answers concise, helpful, and format any code examples clearly. Do NOT generate a zip file here, just talk to the user.`;
+    const systemInstruction = `You are a sophisticated Minecraft Add-on Architect. 
+Your goal is to guide the user with thoughtful, structured, and insightful advice, much like an expert engineer. 
+- Always format your explanations using clear Markdown (headings, bullet points, and code blocks).
+- If the user asks for code, provide clean, commented examples.
+- If the user is confused, ask clarifying questions before jumping to solutions.
+- Be encouraging, concise, and professional. 
+- Never provide a raw zip file here; only provide architectural advice, logic explanations, and debugging help.`;
+
 
     const response = await ai.models.generateContent({
         model: 'gemini-2.5-flash',
