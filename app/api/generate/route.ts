@@ -37,7 +37,7 @@ export async function POST(req: Request) {
     const zipBuffer = await zip.generateAsync({ type: "uint8array" });
 
     // 5. Send the finished .mcaddon file back to the user
-    return new NextResponse(zipBuffer, {
+    return new NextResponse(zipBuffer as any, {
       headers: {
         "Content-Type": "application/octet-stream",
         "Content-Disposition": "attachment; filename=ai-generated.mcaddon",
